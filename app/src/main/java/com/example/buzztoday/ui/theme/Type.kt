@@ -2,9 +2,11 @@ package com.example.buzztoday.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.buzztoday.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -31,4 +33,13 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+)
+
+val parkinsan = FontFamily(
+    Font(R.font.parkinsans_bold, FontWeight.Bold),
+    Font(R.font.parkinsans_extrabold, FontWeight.ExtraBold),
+    Font(R.font.parkinsans_light, FontWeight.Light),
+    Font(R.font.parkinsans_medium, FontWeight.Medium),
+    Font(R.font.parkinsans_regular, FontWeight.Normal),
+    Font(R.font.parkinsans_semibold, FontWeight.SemiBold),
 )
