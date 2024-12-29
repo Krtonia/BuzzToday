@@ -1,4 +1,4 @@
-package com.example.buzztoday.presentation
+package com.example.buzztoday
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,20 +11,39 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.buzztoday.presentation.home.Home
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.buzztoday.ui.theme.BuzzTodayTheme
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         enableEdgeToEdge()
         setContent {
             BuzzTodayTheme {
-                Home()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
             }
         }
     }
 }
 
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    BuzzTodayTheme {
+        Greeting("Android")
+    }
+}
