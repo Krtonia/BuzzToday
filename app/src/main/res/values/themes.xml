@@ -2,4 +2,15 @@
 <resources>
 
     <style name="Theme.BuzzToday" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Light mode -->
+
+    <!-- Screen Background -->
+    <style name="SCREEN">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+    <!-- Text Background if Light mode On -->
+
+
 </resources>
