@@ -39,10 +39,10 @@ fun OnBoardingpage(
                 .fillMaxHeight(0.7f)
                 .clip(shape = RoundedCornerShape(10.dp)),
             painter = painterResource(id = page.image),
-            contentDescription = null,
+            contentDescription = page.title,
             contentScale = ContentScale.Crop
         )
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         Text(
             text = page.title,
             modifier = Modifier.padding(horizontal = 20.dp),
@@ -51,7 +51,7 @@ fun OnBoardingpage(
         )
         Text(
             text = page.description,
-            modifier = Modifier.padding(horizontal = 20.dp),
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp),
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 16.sp,
             color = colorResource(id = R.color.text)
