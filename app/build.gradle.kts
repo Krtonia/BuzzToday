@@ -91,6 +91,12 @@ dependencies {
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // ViewModel utilities for Compose
-    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation (libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Paging 3
+    implementation (libs.androidx.paging.runtime)
+
+    //SystemUiColor
+    implementation (libs.accompanist.systemuicontroller)
 }

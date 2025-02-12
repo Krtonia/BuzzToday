@@ -1,7 +1,9 @@
 # libs.versions.toml
 
 [versions]
+accompanistSystemuicontroller = "0.30.1"
 agp = "8.2.2"
+hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.21"
 coreKtx = "1.12.0"
 lifecycleRuntimeKtx = "2.7.0"
@@ -10,6 +12,7 @@ composeBom = "2024.02.00"
 lifecycleViewmodelKtx = "2.8.7"
 navigationCompose = "2.7.7"
 hiltAndroid = "2.51"
+pagingRuntime = "3.2.1"
 retrofit = "2.9.0"
 kotlinxSerializationJson = "1.6.2"
 coilCompose = "2.5.0"
@@ -21,12 +24,15 @@ espressoCore = "3.5.1"
 serializationConverter = "1.0.0"
 
 [libraries]
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
