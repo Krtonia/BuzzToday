@@ -66,6 +66,8 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation(libs.androidx.runner)
+    implementation(libs.androidx.test.espresso.core)
     kapt(libs.hilt.android.compiler)
 
     // Retrofit + Serialization
@@ -97,6 +99,10 @@ dependencies {
     // Paging 3
     implementation (libs.androidx.paging.runtime)
 
-    //SystemUiColor
+    // Gson Converter
+    implementation (libs.retrofit)
+    implementation(libs.converter.gson.v290)
+
+    // SystemUiColor
     implementation (libs.accompanist.systemuicontroller)
 }

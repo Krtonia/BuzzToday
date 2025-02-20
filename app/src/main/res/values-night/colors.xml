@@ -2,4 +2,7 @@
 <resources>
     <color name="display">#FFFFFFFF</color>
     <color name="text">#FFB0B3B8</color>
+    <color name="body">#B0B3B8</color>
+    <color name="shimmer">#414243</color>
+    <color name="titles">#E4E6EB</color>
 </resources>
