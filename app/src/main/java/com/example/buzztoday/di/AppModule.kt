@@ -3,14 +3,15 @@ package com.example.buzztoday.di
 import android.app.Application
 import com.example.buzztoday.data.manager.LocalUserManagerImpl
 import com.example.buzztoday.data.remote.NewsApi
-import com.example.buzztoday.data.repository.NewsRepositoryImpl
+import com.example.buzztoday.data.repository.NewsRepoImpl
 import com.example.buzztoday.domain.manager.LocalUserManager
-import com.example.buzztoday.domain.repository.NewsRepository
-import com.example.buzztoday.domain.usecases.AppEntryUseCases
-import com.example.buzztoday.domain.usecases.ReadAppEntry
-import com.example.buzztoday.domain.usecases.SaveAppEntry
-import com.example.buzztoday.domain.usecases.news.GetNews
-import com.example.buzztoday.domain.usecases.news.NewsUseCases
+import com.example.buzztoday.domain.repository.NewsRepo
+import com.example.buzztoday.domain.usecases.AppEntry
+import com.example.buzztoday.domain.usecases.Read
+import com.example.buzztoday.domain.usecases.Save
+import com.example.buzztoday.domain.usecases.news.News
+import com.example.buzztoday.domain.usecases.news.NewsCases
+import com.example.buzztoday.domain.usecases.news.Search
 import com.example.buzztoday.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -32,9 +33,9 @@ object AppModule {
     @Provides
     @Singleton
     fun providesAppEntryUseCases(localUserManager: LocalUserManager) =
-        AppEntryUseCases(
-            readAppEntry = ReadAppEntry(localUserManager),
-            saveAppEntry = SaveAppEntry(localUserManager)
+        AppEntry(
+            read = Read(localUserManager),
+            save = Save(localUserManager)
         )
 
     @Provides
@@ -48,12 +49,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(newsApi: NewsApi): NewsRepository = NewsRepositoryImpl(newsApi)
+    fun provideNewsRepository(newsApi: NewsApi): NewsRepo = NewsRepoImpl(newsApi)
 
     @Provides
     @Singleton
-    fun provideNewsUseCases(newsRepository: NewsRepository): NewsUseCases {
-        return NewsUseCases(getNews = GetNews(newsRepository))
+    fun provideNewsUseCases(newsRepo: NewsRepo): NewsCases {
+        return NewsCases(news = News(newsRepo), search = Search(newsRepo))
     }
 
 }

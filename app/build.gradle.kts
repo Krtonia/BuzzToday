@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.runner)
     implementation(libs.androidx.test.espresso.core)
+    implementation(libs.androidx.paging.compose.android)
     kapt(libs.hilt.android.compiler)
 
     // Retrofit + Serialization
@@ -89,6 +90,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Runtime
+    implementation(libs.androidx.runtime)  // Use your project's version
+    implementation(libs.androidx.runtime.livedata)
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

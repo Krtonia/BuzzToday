@@ -11,5 +11,7 @@
     <color name="titles">#000000</color>
     <color name="body">#4E4B66</color>
     <color name="shimmer">#C3C3C3</color>
+    <color name="ic">#A0A3BD</color>
+    <color name="background">#fff</color>
     <color name="text">#FF4E4B66</color>
 </resources>

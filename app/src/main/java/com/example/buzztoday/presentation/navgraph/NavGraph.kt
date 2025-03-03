@@ -10,6 +10,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.buzztoday.presentation.home.Home
+import com.example.buzztoday.presentation.home.Screen
 import com.example.buzztoday.presentation.onboarding.OnBoardingScreen
 import com.example.buzztoday.presentation.onboarding.OnBoardingViewModel
 
@@ -40,11 +43,9 @@ fun NavGraph(
         {
             composable(route = Route.NewsNavigatorScreen.route)
             {
-                Text(
-                    text = "Lund",
-                    fontWeight = FontWeight.ExtraBold,
-                    color = Color.Magenta
-                )
+                val viewModel: Home = hiltViewModel()
+                val art = viewModel.news.collectAsLazyPagingItems()
+                Screen(article = art , navigate = {})
             }
         }
     }

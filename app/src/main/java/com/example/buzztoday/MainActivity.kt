@@ -17,31 +17,17 @@ import com.example.buzztoday.ui.theme.BuzzTodayTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
-import android.util.Log
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalView
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.view.WindowCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +41,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BuzzTodayApp() {
-    val viewModel: MainViewModel = viewModel()
+    val viewModel: MainModel = viewModel()
     BuzzTodayTheme {
         val isdark = isSystemInDarkTheme()
         val sysControl = rememberSystemUiController()
