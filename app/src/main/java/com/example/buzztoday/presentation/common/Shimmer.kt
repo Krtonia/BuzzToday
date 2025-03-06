@@ -13,7 +13,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
@@ -23,6 +26,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 fun Modifier.shimmer(): Modifier = composed {
@@ -58,39 +62,52 @@ fun Modifier.shimmer(): Modifier = composed {
 
 @Composable
 fun CardShimmerEffect(modifier: Modifier = Modifier) {
-    Row(
+    ElevatedCard(
         modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .size(90.dp)
-                .clip(MaterialTheme.shapes.medium)
-                .shimmer()
-        )
         Column(
-            verticalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier
-                .padding(horizontal = 5.dp)
-                .height(90.dp)
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(30.dp)
-                    .padding(horizontal = 25.dp)
+                    .fillMaxWidth().height(180.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .clip(MaterialTheme.shapes.medium)
                     .shimmer()
             )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(24.dp)
+                    .shimmer()
+            )
+            repeat(3) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(16.dp)
+                        .shimmer()
+                )
+            }
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .padding(horizontal = 25.dp)
-                        .height(15.dp)
+                        .fillMaxWidth(1f)
+                        .height(16.dp)
                         .shimmer()
                 )
-
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(1f)
+                        .height(16.dp)
+                        .shimmer()
+                )
             }
         }
     }
@@ -107,4 +124,3 @@ fun Modifier.ShimmerEffect() = composed{
     ).value
     background(color = colorResource(id = R.color.shimmer).copy(alpha = alpha))
 }*/
-

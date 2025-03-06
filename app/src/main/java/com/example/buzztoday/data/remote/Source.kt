@@ -10,28 +10,33 @@ class Source(
     private var searchQuery: String,
     private val sources: String
 ) : PagingSource<Int, Article>() {
-    private var totalNewsCount = 0
+
     override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
         return try {
-            val Response = api.getNews(
+            val response = api.Searches(
                 searchQuery = searchQuery,
                 sources = sources,
                 page = page
             )
-            totalNewsCount += Response.articles.size
-            val articles = Response.articles.distinctBy { it.title }
+
+            val articles = response.articles.distinctBy { it.title }
+
+            // Check if we've reached the end based on current page and results
+            val hasMoreData = articles.isNotEmpty() &&
+                    (response.totalResults > (page * articles.size))
+
             LoadResult.Page(
                 data = articles,
-                nextKey = if (totalNewsCount == Response.totalResults) null else page + 1,
-                prevKey = null
+                nextKey = if (hasMoreData) page + 1 else null,
+                prevKey = if (page > 1) page - 1 else null
             )
         } catch (e: Exception) {
             e.printStackTrace()

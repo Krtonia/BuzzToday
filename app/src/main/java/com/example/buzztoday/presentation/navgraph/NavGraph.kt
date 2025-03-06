@@ -15,6 +15,7 @@ import com.example.buzztoday.presentation.home.Home
 import com.example.buzztoday.presentation.home.Screen
 import com.example.buzztoday.presentation.onboarding.OnBoardingScreen
 import com.example.buzztoday.presentation.onboarding.OnBoardingViewModel
+import com.example.buzztoday.presentation.state.ViewModel
 
 @Composable
 fun NavGraph(
@@ -43,9 +44,12 @@ fun NavGraph(
         {
             composable(route = Route.NewsNavigatorScreen.route)
             {
-                val viewModel: Home = hiltViewModel()
-                val art = viewModel.news.collectAsLazyPagingItems()
-                Screen(article = art , navigate = {})
+                val viewModel: ViewModel = hiltViewModel()
+                com.example.buzztoday.presentation.state.Screen(
+                    state = viewModel.state.value   ,
+                    event = viewModel::onEvent,
+                    navigate = {}
+                )
             }
         }
     }

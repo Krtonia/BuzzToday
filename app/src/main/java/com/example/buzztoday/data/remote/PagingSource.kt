@@ -22,7 +22,6 @@ class PagingSource(private val newsApi: NewsApi, private val sources: String) :
             val newsResponse = newsApi.getNews(
                 page = page,
                 sources = sources,
-                searchQuery = searchQuery
             )
             totalNewsCount+=newsResponse.articles.size
             val articles = newsResponse.articles.distinctBy { it.title }
