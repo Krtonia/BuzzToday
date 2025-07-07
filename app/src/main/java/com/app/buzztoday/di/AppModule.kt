@@ -2,8 +2,8 @@ package com.app.buzztoday.di
 
 import android.app.Application
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.app.buzztoday.data.internal.Base
-import com.app.buzztoday.data.internal.Convertor
 import com.app.buzztoday.data.internal.Dao
 import com.app.buzztoday.data.manager.LocalUserManagerImpl
 import com.app.buzztoday.data.remote.NewsApi
@@ -45,7 +45,8 @@ object AppModule {
     @Provides
     @Singleton
     fun ProvideNewsApi(): NewsApi {
-        return Retrofit.Builder().baseUrl(BASE_URL)
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NewsApi::class.java)
@@ -58,28 +59,29 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsUseCases(newsRepo: NewsRepo): NewsCases {
-        return NewsCases(news = News(newsRepo), search = Search(newsRepo))
+        return NewsCases(
+            news = News(newsRepo),
+            search = Search(newsRepo)
+        )
     }
 
     @Provides
     @Singleton
     fun NewsDb(
         application: Application
-    ): Base {
+    ): RoomDatabase.Builder<Base> {
         return Room.databaseBuilder(
             context = application,
             klass = Base::class.java,
             name = "news_db"
-        ).addTypeConverter(Convertor())
-            .fallbackToDestructiveMigration()
-            .build()
+        )
     }
 
     @Provides
     @Singleton
     fun PbNewsDao(
         newDatabase: Base
-    ): Dao = newDatabase.Dao
+    ): Dao = newDatabase.dao
 
 }
 

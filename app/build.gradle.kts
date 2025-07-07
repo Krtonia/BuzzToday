@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.app.buzztoday"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.app.buzztoday"
         minSdk = 27
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -46,6 +46,16 @@ android {
 
     kapt {
         correctErrorTypes = true
+        useBuildCache = false
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
+    configurations.all {
+        resolutionStrategy {
+            force("org.jetbrains.kotlin:kotlin-stdlib:1.9.21")
+            force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21")
+        }
     }
 }
 
@@ -109,6 +119,9 @@ dependencies {
     // Gson Converter
     implementation (libs.retrofit)
     implementation(libs.converter.gson.v290)
+
+    // Force Kotlin stdlib to match compiler version
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.21")
 
     //Room
     implementation (libs.androidx.room.runtime)
