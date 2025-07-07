@@ -2,7 +2,7 @@
 
 [versions]
 accompanistSystemuicontroller = "0.30.1"
-agp = "8.2.2"
+agp = "8.9.1"
 converterGson = "latest.version"
 converterGsonVersion = "2.0.0-beta2"
 hiltNavigationCompose = "1.2.0"
@@ -23,12 +23,14 @@ datastorePreferences = "1.0.0"
 junit = "4.13.2"
 androidxTestExt = "1.1.5"
 espressoCore = "3.5.1"
+roomRuntime = "2.5.2"
 runtime = "1.5.4"
 serializationConverter = "1.0.0"
 squareupConverterGson = "2.9.0"
 squareupRetrofit = "2.x.x"
 runner = "1.5.2"
 pagingComposeAndroid = "3.3.6"
+roomCommon = "2.6.1"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
@@ -40,6 +42,9 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", versi
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "runtime" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -71,6 +76,7 @@ androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 androidx-paging-compose-android = { group = "androidx.paging", name = "paging-compose-android", version.ref = "pagingComposeAndroid" }
+androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

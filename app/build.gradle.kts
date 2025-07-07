@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.buzztoday"
+    namespace = "com.app.buzztoday"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.buzztoday"
+        applicationId = "com.app.buzztoday"
         minSdk = 27
         targetSdk = 34
         versionCode = 1
@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.androidx.runner)
     implementation(libs.androidx.test.espresso.core)
     implementation(libs.androidx.paging.compose.android)
+    implementation(libs.androidx.room.common)
     kapt(libs.hilt.android.compiler)
 
     // Retrofit + Serialization
@@ -97,6 +98,7 @@ dependencies {
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     // ViewModel utilities for Compose
     implementation (libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
@@ -107,6 +109,12 @@ dependencies {
     // Gson Converter
     implementation (libs.retrofit)
     implementation(libs.converter.gson.v290)
+
+    //Room
+    implementation (libs.androidx.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
 
     // SystemUiColor
     implementation (libs.accompanist.systemuicontroller)

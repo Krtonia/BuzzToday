@@ -5,6 +5,7 @@
     <color name="body">#B0B3B8</color>
     <color name="shimmer">#414243</color>
     <color name="titles">#E4E6EB</color>
+    <color name="title">#E4E6EB</color>
     <color name="ic">#DDDDDD</color>
     <color name="background">#3A3B3C</color>
 </resources>
