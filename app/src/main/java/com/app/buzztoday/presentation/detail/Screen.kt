@@ -2,6 +2,7 @@ package com.app.buzztoday.presentation.detail
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -25,22 +27,38 @@ import coil.request.ImageRequest
 import com.app.buzztoday.R
 import com.app.buzztoday.domain.model.Article
 import com.app.buzztoday.presentation.detail.topbar.TopBar
+import androidx.core.net.toUri
+import com.app.buzztoday.util.UIComponent
 
 @Composable
 fun Screen(
     article: Article,
     event: (Event) -> Unit,
+    sideEffect: UIComponent?,
     navigateUp: () -> Unit
 ) {
     val context = LocalContext.current
-    Column(modifier = Modifier.run {
-        fillMaxSize()
+    LaunchedEffect(key1 = sideEffect) {
+        sideEffect?.let {
+            when(sideEffect){
+                is UIComponent.Toast ->{
+                    Toast.makeText(context, sideEffect.message, Toast.LENGTH_SHORT).show()
+                    event(Event.RemoveSideEffect)
+                }
+                else -> Unit
+            }
+        }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
             .statusBarsPadding()
-    }) {
+    ) {
         TopBar(
             onBrowsingClick = {
                 Intent(Intent.ACTION_VIEW).also {
-                    it.data = Uri.parse(article.url)
+                    it.data = article.url.toUri()
                     if (it.resolveActivity(context.packageManager) != null) {
                         context.startActivity(it)
                     }
@@ -56,7 +74,7 @@ fun Screen(
                 }
             },
             onBookMarkClick = {
-                event(Event.SaveArticle)
+                event(Event.UpsertDeleteArticle(article))
             },
             onBackClick = navigateUp
         )

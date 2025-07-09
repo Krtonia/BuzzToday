@@ -13,9 +13,13 @@ import com.app.buzztoday.domain.repository.NewsRepo
 import com.app.buzztoday.domain.usecases.AppEntry
 import com.app.buzztoday.domain.usecases.Read
 import com.app.buzztoday.domain.usecases.Save
+import com.app.buzztoday.domain.usecases.news.Delete
+import com.app.buzztoday.domain.usecases.news.Get
+import com.app.buzztoday.domain.usecases.news.GetArticle
 import com.app.buzztoday.domain.usecases.news.News
 import com.app.buzztoday.domain.usecases.news.NewsCases
 import com.app.buzztoday.domain.usecases.news.Search
+import com.app.buzztoday.domain.usecases.news.Upsert
 import com.app.buzztoday.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -54,14 +58,21 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(newsApi: NewsApi): NewsRepo = NewsRepoImpl(newsApi)
+    fun provideNewsRepository(newsApi: NewsApi,newsDao: Dao): NewsRepo {
+        return NewsRepoImpl(newsApi,newsDao)
+    }
 
     @Provides
     @Singleton
-    fun provideNewsUseCases(newsRepo: NewsRepo): NewsCases {
+    fun provideNewsUseCases(newsRepo: NewsRepo,newsDao: Dao): NewsCases {
         return NewsCases(
             news = News(newsRepo),
-            search = Search(newsRepo)
+            search = Search(newsRepo),
+            searchNews = Search(newsRepo),
+            upsertArticle = Upsert(newsDao),
+            deleteArticle = Delete(newsDao),
+            getArticles = Get(newsDao),
+            getArticle = GetArticle(newsDao)
         )
     }
 
@@ -84,4 +95,3 @@ object AppModule {
     ): Dao = newDatabase.dao
 
 }
-

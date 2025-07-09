@@ -17,22 +17,27 @@ import com.app.buzztoday.domain.model.Article
 
 @Composable
 fun ArticleList(
-    modifier: Modifier,
-    article: LazyPagingItems<Article>,
+    modifier: Modifier = Modifier,
+    articles: List<Article>,
     onClick: (Article) -> Unit
 ) {
-    val results = Result(article = article)
-    if (results) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(25.dp),
-            contentPadding = PaddingValues(all = 8.dp)
+    if (articles.isEmpty()){
+        EmptyScreen()
+    }
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(25.dp),
+        contentPadding = PaddingValues(all = 8.dp)
+    ) {
+        items(
+            count = articles.size,
         ) {
-            items(count = article.itemCount) {
-                article[it]?.let { ArticleCard(article = it, onClick = { onClick(it) }) }
+            articles[it]?.let { article ->
+                ArticleCard(article = article, onClick = { onClick(article) })
             }
         }
     }
+
 }
 
 @Composable

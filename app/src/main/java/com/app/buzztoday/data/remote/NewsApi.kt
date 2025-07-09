@@ -10,8 +10,7 @@ interface NewsApi {
     fun getNews(
         @Query("page") page: Int,
         @Query("sources") sources: String,
-        @Query("apikey") apiKey: String = API_KEY,
-
+        @Query("apikey") apiKey: String = API_KEY
     ): NewsResponse
 
     @GET("everything")

@@ -19,4 +19,7 @@ interface Dao {
 
     @Query("SELECT * FROM Article")
     fun get(): Flow<List<Article>>
+
+    @Query("SELECT * FROM Article WHERE url=:url")
+    suspend fun getArticle(url: String): Article?
 }

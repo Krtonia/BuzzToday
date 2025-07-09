@@ -10,7 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ViewModel @Inject constructor(private var newsCases: NewsCases): ViewModel()
+open class ViewModel @Inject constructor(private var newsCases: NewsCases): ViewModel()
 {
     private var _state = mutableStateOf(SearchSt())
     val state: State<SearchSt> = _state
