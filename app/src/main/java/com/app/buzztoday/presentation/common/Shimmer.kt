@@ -108,15 +108,3 @@ fun CardShimmerEffect(modifier: Modifier = Modifier) {
         }
     }
 }
-
-/*@SuppressLint("ModifierFactoryUnreferencedReceiver")
-fun Modifier.ShimmerEffect() = composed{
-    val transition = rememberInfiniteTransition()
-    val alpha = transition.animateFloat(
-        initialValue = 0.2f, targetValue = 0.9f, animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1000),
-            repeatMode = RepeatMode.Reverse
-        )
-    ).value
-    background(color = colorResource(id = R.color.shimmer).copy(alpha = alpha))
-}*/

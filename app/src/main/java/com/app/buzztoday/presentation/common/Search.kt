@@ -111,13 +111,3 @@ fun Modifier.searchBar(): Modifier = composed {
         this
     }
 }
-
-@Preview(showBackground = true)
-@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun Search() {
-    BuzzTodayTheme() {
-        Search(text = "", onValueChange = {}, readOnly = false) {
-        }
-    }
-}

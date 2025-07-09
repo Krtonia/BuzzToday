@@ -10,11 +10,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
-    private val newsUseCases: NewsCases
-) : ViewModel() {
+    private val newsUseCases: NewsCases, newsCases: NewsCases
+) : ViewModel(newsCases) {
 
     private val _state = mutableStateOf(BookmarkState())
-    val state: State<BookmarkState> = _state
+    override val state: State<BookmarkState> = _state
 
     init {
         getArticles()

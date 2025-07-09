@@ -41,7 +41,7 @@ fun ArticleList(
 }
 
 @Composable
-fun Result(article: LazyPagingItems<Article>): Boolean {
+fun result(article: LazyPagingItems<Article>): Boolean {
     val loadState = article.loadState
     val error = when {
         loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error

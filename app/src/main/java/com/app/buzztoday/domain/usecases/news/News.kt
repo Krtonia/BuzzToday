@@ -8,6 +8,5 @@ import kotlinx.coroutines.flow.Flow
 class News(private val newsRepo: NewsRepo) {
     operator fun invoke(sources: List<String>): Flow<PagingData<Article>>{
         return newsRepo.getNews(sources=sources)
-
     }
 }

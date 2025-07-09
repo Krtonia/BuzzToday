@@ -25,17 +25,6 @@ import com.app.buzztoday.presentation.nav.Route
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun Screen(article: LazyPagingItems<Article>, navigate: (String) -> Unit) {
-    /*val titles = remember {
-        derivedStateOf {
-            if (article.itemCount > 5) {
-                article.itemSnapshotList.items.slice(IntRange(start = 0, endInclusive = 8))
-                    .joinToString(separator = "\uD83C\uDF0D") { it.title }
-            } else {
-                ""
-            }
-        }
-    }*/
-
     Column(
         modifier = Modifier
             .fillMaxSize()

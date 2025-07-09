@@ -87,7 +87,5 @@ fun ArticleCard(
                 }
             }
         }
-
-
     }
 }

@@ -13,7 +13,7 @@ import javax.inject.Inject
 open class ViewModel @Inject constructor(private var newsCases: NewsCases): ViewModel()
 {
     private var _state = mutableStateOf(SearchSt())
-    val state: State<SearchSt> = _state
+    open val state: State<SearchSt> = _state
 
 
     fun onEvent(event: Event) {

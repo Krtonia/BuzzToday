@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.app.buzztoday.domain.model.Article
 import com.app.buzztoday.domain.usecases.news.NewsCases
 import com.app.buzztoday.presentation.state.ViewModel
+import com.app.buzztoday.util.UIComponent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,6 +35,7 @@ class DetailsViewModel @Inject constructor(
             is Event.RemoveSideEffect ->{
                 sideEffect = null
             }
+            Event.SaveArticle -> TODO()
         }
     }
 
